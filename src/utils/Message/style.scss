@@ -1,0 +1,156 @@
+.ui-message {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000033;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    backdrop-filter: blur(20px) saturate(2);
+    user-select: none;
+    -webkit-user-select: none;
+    color: #ffffffaa;
+    animation: ui-message-enter ease .4s forwards;
+
+
+    &__alert {
+        max-width: 400px;
+        width: 50%;
+        background-color: #ffffff22;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 0 20px #00000022;
+        animation: ui-message-content-enter ease .4s forwards;
+
+        &_title {
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+        }
+
+        &_context {
+            padding: 10px 20px;
+            text-align: center;
+
+            &_label {
+                padding: 10px;
+            }
+
+            &_input {
+                width: 100%;
+                height: 30px;
+                margin-top: 10px;
+                overflow: hidden;
+                border-radius: 5px;
+                box-shadow: 0 0 10px #00000011;
+
+                input {
+                    width: 100%;
+                    height: 100%;
+                    outline: none;
+                    border: 0;
+                    background-color: #ffffff22;
+                    padding: 0 10px;
+                    color: #ffffffee;
+                    transition: all ease .3s;
+
+                    &:focus {
+                        background-color: #ffffff44;
+                    }
+                }
+            }
+        }
+
+        &_footer {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+
+            button {
+                padding: 5px 10px;
+                outline: none;
+                border: 0;
+                background-color: #ffffff33;
+                color: #ffffffee;
+                border-radius: 4px;
+                transition: all ease .2s;
+                cursor: pointer;
+                box-shadow: 0 0 10px #00000011;
+
+                &:hover {
+                    background-color: #ffffff44;
+                }
+
+                &:active {
+                    background-color: #00000022;
+                }
+            }
+        }
+    }
+}
+
+.ui-message-remove {
+    animation: ui-message-leave ease .4s forwards;
+
+    .ui-message-remove-content {
+        animation: ui-message-content-leave ease .4s forwards;
+    }
+}
+
+@keyframes ui-message-enter {
+    0% {
+        background-color: #00000000;
+        backdrop-filter: blur(0) saturate(1);
+    }
+
+    100% {
+        background-color: #00000033;
+        backdrop-filter: blur(20) saturate(2);
+    }
+}
+
+@keyframes ui-message-leave {
+
+    0% {
+        background-color: #00000033;
+        backdrop-filter: blur(20) saturate(2);
+    }
+
+    100% {
+        background-color: #00000000;
+        backdrop-filter: blur(0) saturate(1);
+    }
+    
+}
+
+
+@keyframes ui-message-content-enter {
+    0% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes ui-message-content-leave {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
